@@ -52,7 +52,7 @@ export default function Navbar() {
 
     const handleLogout = () => {};
     // const isLoggedIn = !!localStorage.getItem('userId');
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     return (
         <div className="header">
