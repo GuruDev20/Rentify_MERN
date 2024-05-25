@@ -31,10 +31,10 @@ function FilterResults({val,location}) {
             : true;
 
         return (
-            (!val.category || val.category.length === 0 || val.category.some((category)=>val.category.includes(category))) &&
-            (!val.available || val.available.length === 0 || val.available.some((available)=>item.available.includes(available))) &&
-            (!val.bathrooms || val.bathrooms.length === 0 || val.bathrooms.some((bathroom)=>item.bathrooms.includes(bathroom))) &&
-            (!val.ageOfProperty || val.ageOfProperty.length === 0 || val.ageOfProperty.some((ageOfProperty)=>item.ageOfProperty.includes(ageOfProperty))) &&
+            (!val.category || val.category.length === 0 || val.category.includes(item.category))&&
+            (!val.available || val.available.length === 0 || val.available.includes(item.available)) &&
+            (!val.bathrooms || val.bathrooms.length === 0 || val.bathrooms.includes(item.bathrooms)) &&
+            (!val.ageOfProperty || val.ageOfProperty.length === 0 || val.ageOfProperty.includes(item.ageOfProperty)) &&
             (!val.amenities || val.amenities.length === 0 || val.amenities.some((amenities)=>item.amenities.includes(amenities))) &&
             (!val.area || val.area.length === 0 || val.area.includes(item.area)) &&
             (!val.furnishes || val.furnishes.length === 0 || val.furnishes.includes(item.furnished)) &&
@@ -76,7 +76,7 @@ function FilterResults({val,location}) {
                 {visibleItemsData.map((item)=>(
                     <section className="card-list" key={item.id}>
                         <Link to={`/productDetails/${location}/${item._id}`} className='link-to-more' key={item.id}>
-                            <img src={""} alt={item.name} className='card-img-result' />
+                            <img src={require(`../Uploads/${item.images[0]}`)} alt={item.name} className='card-img-result' />
                         </Link>
                         <div className="card-details">
                             <div className="card-title">{item.name}</div>

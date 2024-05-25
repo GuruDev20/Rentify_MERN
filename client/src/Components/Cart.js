@@ -147,7 +147,7 @@ function Cart() {
                                     <div className="cart-product-cards">
                                         <div className='cart-img'>
                                             <Link to='' className="link-to-more" key={product._id} reloadDocument>
-                                                {/* <img src={require(`/../../../src/uploads/${product.images[0]}`)} alt={product.name} className='cart-img-res' /> */}
+                                                <img src={require(`../Uploads/${product.images[0]}`)} alt={product.name} className='cart-img-res' />
                                             </Link>
                                         </div>
                                         <div className='cart-res-text'>
@@ -219,7 +219,7 @@ function Cart() {
                                     <div className='pay-header'>Payment Type</div>
                                     <div className='pay'>
                                         <button onClick={() => handlePaymentSelection('online')} className='pay-online'>Online Payment</button>
-                                        <button onClick={() => handlePaymentSelection('cash')} className='pay-offline'>Cash on Delivery</button>
+                                        <button onClick={() => handlePaymentSelection('cash')} className='pay-offline'>Cash on Visit</button>
                                     </div>
                                 </div>
                             )}

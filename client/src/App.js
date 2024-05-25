@@ -6,6 +6,7 @@ import SearchResults from './Components/SearchResults';
 import LoginSignUp from './Components/LoginSignUp';
 import Cart from './Components/Cart';
 import Wishlist from './Components/Wishlist';
+import Profile from './Components/Profile';
 function App() {
     window.addEventListener("scroll", reveal);
     function reveal() {
@@ -37,6 +38,7 @@ function App() {
             <Route path='/loginRegister' element={<LoginSignUp/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/wishlist' element={<Wishlist/>}/>
+            <Route path='/profile' element={<Profile/>}/>
         </Routes>
     )
 }

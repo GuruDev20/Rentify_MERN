@@ -84,7 +84,7 @@ function Wishlist() {
                         {products.map(product => (
                             <div key={product._id} className="wish-product-cards">
                                 <Link to={`/searchResults/${locationParams}/${product._id}`} className="link-to-more" key={product._id} reloadDocument>
-                                    {/* <img src={require(`../../../src/uploads/${product.images[0]}`)} alt={product.name} className='wish-img'/> */}
+                                    <img src={require(`../Uploads/${product.images[0]}`)} alt={product.name} className='wish-img'/>
                                 </Link>
                                 <p className='wish-name'>{product.name}</p>
                                 <p className='wish-area'>{product.area}</p>

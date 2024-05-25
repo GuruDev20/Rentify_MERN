@@ -329,28 +329,30 @@ function Filter(props) {
     const [showAvailableDropdown, setShowAvailableDropdown] = useState(false);
     const [showNumberOfBathroomsDropdown, setShowNumberOfBathroomsDropdown] = useState(false);
     const [showAgeOfProperty, setShowAgeOfProperty] = useState(false);
-    const [showAmenitiesDropdown, setShowAmenitiesDropdown]=useState(false);
+    const [showAmenitiesDropdown, setShowAmenitiesDropdown] = useState(false);
     const [showFurnishedStatusDropdown, setShowFurnishedStatusDropdown] = useState(false);
     const [showAreaDropdown, setShowAreaDropdown] = useState(false);
+
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedPrice, setSelectedPrice] = useState([]);
     const [selectedAvailable, setSelectedAvailable] = useState([]);
-    const [selectedNumberofBathrooms,setSelectedNumberofBathrooms]=useState([]);
-    const [selectedAgeofProperty,setSelectedAgeofProperty]=useState([]);
-    const [selectedAmenities,setSelectedAmenities]=useState([]);
-    const [selectedFurnished,setSelectedFurnished]=useState([]);
-    const [selectedArea,setSelectedArea]=useState([]);
+    const [selectedNumberOfBathrooms, setSelectedNumberOfBathrooms] = useState([]);
+    const [selectedAgeOfProperty, setSelectedAgeOfProperty] = useState([]);
+    const [selectedAmenities, setSelectedAmenities] = useState([]);
+    const [selectedFurnished, setSelectedFurnished] = useState([]);
+    const [selectedArea, setSelectedArea] = useState([]);
+
     const [checkedItems, setCheckedItems] = useState({
         category: [],
         price: [],
-        available:[],
-        bathrooms:[],
-        ageOfProperty:[],
-        amenities:[],
-        furnished:[],
-        area:[]
+        available: [],
+        bathrooms: [],
+        ageOfProperty: [],
+        amenities: [],
+        furnished: [],
+        area: []
     });
-
+    console.log(checkedItems);
     const renderCategoryItem = (item) => (
         <div className='category-item'>
             {item}
@@ -368,11 +370,11 @@ function Filter(props) {
         <div className='price-item'>
             {item}
             <input
-            type='checkbox'
-            value={item}
-            className='checkbox-right'
-            onChange={() => handleCheckboxChange(item, selectedPrice, setSelectedPrice, 'price')}
-            checked={checkedItems.price.includes(item)}
+                type='checkbox'
+                value={item}
+                className='checkbox-right'
+                onChange={() => handleCheckboxChange(item, selectedPrice, setSelectedPrice, 'price')}
+                checked={checkedItems.price.includes(item)}
             />
         </div>
     );
@@ -397,7 +399,7 @@ function Filter(props) {
                 type='checkbox'
                 value={item}
                 className='checkbox-right'
-                onChange={() => handleCheckboxChange(item, selectedNumberofBathrooms, setSelectedNumberofBathrooms, 'bathroom')}
+                onChange={() => handleCheckboxChange(item, selectedNumberOfBathrooms, setSelectedNumberOfBathrooms, 'bathrooms')}
                 checked={checkedItems.bathrooms.includes(item)}
             />
         </div>
@@ -410,7 +412,7 @@ function Filter(props) {
                 type='checkbox'
                 value={item}
                 className='checkbox-right'
-                onChange={() => handleCheckboxChange(item, selectedAgeofProperty, setSelectedAgeofProperty, 'ageOfProperty')}
+                onChange={() => handleCheckboxChange(item, selectedAgeOfProperty, setSelectedAgeOfProperty, 'ageOfProperty')}
                 checked={checkedItems.ageOfProperty.includes(item)}
             />
         </div>
@@ -457,8 +459,8 @@ function Filter(props) {
 
     const handleCheckboxChange = (item, selectedList, setSelectedList, filterType) => {
         const updatedList = selectedList.includes(item)
-        ? selectedList.filter((selectedItem) => selectedItem !== item)
-        : [...selectedList, item];
+            ? selectedList.filter((selectedItem) => selectedItem !== item)
+            : [...selectedList, item];
 
         setSelectedList(updatedList);
         const updatedCheckedItems = { ...checkedItems, [filterType]: updatedList };
@@ -475,35 +477,35 @@ function Filter(props) {
         if (checkbox) {
             checkbox.checked = false;
         }
-    };
+    }
     return (
         <div className="rental-container">
             <div className="rental-filter">
                 <h2 className="shop-title">Shop By: {props.location}</h2>
                 <div className="selected-list">
-                    {selectedCategory.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedCategory, setSelectedCategory,'category')}/></span>
+                    {selectedCategory.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedCategory, setSelectedCategory, 'category')} /></span>
                     ))}
-                    {selectedPrice.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedPrice, setSelectedPrice,'price')}/></span>
+                    {selectedPrice.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedPrice, setSelectedPrice, 'price')} /></span>
                     ))}
-                    {selectedAvailable.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedAvailable, setSelectedAvailable,'available')}/></span>
+                    {selectedAvailable.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedAvailable, setSelectedAvailable, 'available')} /></span>
                     ))}
-                    {selectedNumberofBathrooms.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedNumberofBathrooms, selectedNumberofBathrooms,'bathroom')}/></span>
+                    {selectedNumberOfBathrooms.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedNumberOfBathrooms, setSelectedNumberOfBathrooms, 'bathrooms')} /></span>
                     ))}
-                    {selectedAgeofProperty.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedAgeofProperty, selectedAgeofProperty,'ageOfProperty')}/></span>
+                    {selectedAgeOfProperty.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedAgeOfProperty, setSelectedAgeOfProperty, 'ageOfProperty')} /></span>
                     ))}
-                    {selectedAmenities.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedAmenities, setSelectedAmenities,'amenities')}/></span>
+                    {selectedAmenities.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedAmenities, setSelectedAmenities, 'amenities')} /></span>
                     ))}
-                    {selectedFurnished.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedFurnished, setSelectedFurnished,'furnished')}/></span>
+                    {selectedFurnished.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedFurnished, setSelectedFurnished, 'furnished')} /></span>
                     ))}
-                    {selectedArea.map((item)=>(
-                        <span key={item} className='selected'>{item}<IoClose  className='close' onClick={() => deleteSelectedItem(item,selectedArea, setSelectedArea,'area')}/></span>
+                    {selectedArea.map((item) => (
+                        <span key={item} className='selected'>{item}<IoClose className='close' onClick={() => deleteSelectedItem(item, selectedArea, setSelectedArea, 'area')} /></span>
                     ))}
                 </div>
                 <div className="filters">
@@ -511,41 +513,41 @@ function Filter(props) {
                         Categories{showCategoryDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
                     {showCategoryDropdown && <DropdownContent items={categoriesData[props.location]} renderItem={renderCategoryItem} />}
-                    <div className="price" onClick={()=>setShowPriceDropdown(!showPriceDropdown)}>
-                        Price{showPriceDropdown?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                    <div className="price" onClick={() => setShowPriceDropdown(!showPriceDropdown)}>
+                        Price{showPriceDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
                     {showPriceDropdown && <DropdownContent items={priceData[props.location]} renderItem={renderPriceItem} />}
-                    <div className="available" onClick={()=>setShowAvailableDropdown(!showAvailableDropdown)}>
-                        Available{showAvailableDropdown?<IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
+                    <div className="available" onClick={() => setShowAvailableDropdown(!showAvailableDropdown)}>
+                        Available{showAvailableDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
                     {showAvailableDropdown && <DropdownContent items={availableData[props.location]} renderItem={renderAvailableItem} />}
-                    <div className="numberOfBathrooms" onClick={()=>setShowNumberOfBathroomsDropdown(!showNumberOfBathroomsDropdown)}>
-                        No.Of Bathrooms{showNumberOfBathroomsDropdown?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                    <div className="numberOfBathrooms" onClick={() => setShowNumberOfBathroomsDropdown(!showNumberOfBathroomsDropdown)}>
+                        No.Of Bathrooms{showNumberOfBathroomsDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
-                    {showNumberOfBathroomsDropdown && <DropdownContent items={bathroomCountData[props.location]} renderItem={renderBathroomItem}/>}
-                    <div className="ageOfProperty" onClick={()=>setShowAgeOfProperty(!showAgeOfProperty)}>
-                        Age of Property{showAgeOfProperty?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                    {showNumberOfBathroomsDropdown && <DropdownContent items={bathroomCountData[props.location]} renderItem={renderBathroomItem} />}
+                    <div className="ageOfProperty" onClick={() => setShowAgeOfProperty(!showAgeOfProperty)}>
+                        Age of Property{showAgeOfProperty ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
-                    {showAgeOfProperty && <DropdownContent items={propertyAgeData[props.location]} renderItem={renderAgeOfPropertyItem}/>}
-                    <div className="amenities" onClick={()=>setShowAmenitiesDropdown(!showAmenitiesDropdown)}>
-                        Amenities{showAmenitiesDropdown ?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                    {showAgeOfProperty && <DropdownContent items={propertyAgeData[props.location]} renderItem={renderAgeOfPropertyItem} />}
+                    <div className="amenities" onClick={() => setShowAmenitiesDropdown(!showAmenitiesDropdown)}>
+                        Amenities{showAmenitiesDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
-                    {showAmenitiesDropdown && <DropdownContent items={amenitiesData[props.location]} renderItem={renderAmenitiesItem}/>}
+                    {showAmenitiesDropdown && <DropdownContent items={amenitiesData[props.location]} renderItem={renderAmenitiesItem} />}
                     <div className="furnished" onClick={() => setShowFurnishedStatusDropdown(!showFurnishedStatusDropdown)}>
-                        Furnished Status{showFurnishedStatusDropdown ?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                        Furnished Status{showFurnishedStatusDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
-                    {showFurnishedStatusDropdown && <DropdownContent items={furnishedData[props.location]} renderItem={renderFurnishedItem}/>}
+                    {showFurnishedStatusDropdown && <DropdownContent items={furnishedData[props.location]} renderItem={renderFurnishedItem} />}
                     <div className="area" onClick={() => setShowAreaDropdown(!showAreaDropdown)}>
-                        Area{showAreaDropdown ?<IoMdArrowDropup className='drop-icon'/>:<IoMdArrowDropdown className='drop-icon' />}
+                        Area{showAreaDropdown ? <IoMdArrowDropup className='drop-icon' /> : <IoMdArrowDropdown className='drop-icon' />}
                     </div>
-                    {showAreaDropdown && <DropdownContent items={areaData[props.location]} renderItem={renderAreaItem}/>}
+                    {showAreaDropdown && <DropdownContent items={areaData[props.location]} renderItem={renderAreaItem} />}
                 </div>
             </div>
             <div>
-                <FilterContent val={checkedItems} location={props.location}/>
+                <FilterContent val={checkedItems} location={props.location} />
             </div>
         </div>
-    )
+    );
 }
 
 export default Filter
