@@ -25,7 +25,7 @@ export default function Navbar() {
     const [suggestedLocations, setSuggestedLocations] = useState([]);
     const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
     const [seller,setSeller]=useState(false);
-    const [user,setUser]=useState(false);
+    // const [user,setUser]=useState(false);
     const [email,setEmail] = useState('');
     useEffect(() => {
         const userId = localStorage.getItem('userId');
@@ -38,7 +38,7 @@ export default function Navbar() {
                     setSeller(true);
                     setEmail(email);
                 } else if (role === 'User') {
-                    setUser(true);
+                    // setUser(true);
                     setEmail(email);
                 }
             })
@@ -71,6 +71,10 @@ export default function Navbar() {
         setLocation(location);
         setSuggestedLocations([]);
     };
+
+    const handleSeller=()=>{
+        navigate('/stocks')
+    }
 
     const handleLogout = () => {
         axios.post("http://localhost:4000/auth/logout")
@@ -115,8 +119,8 @@ export default function Navbar() {
                 )}
             </div>
             <div className="user-properties">
-                {seller||user?(
-                    <p className='user-role'>{email}</p>
+                {seller?(
+                    <button className="sell-opt" onClick={handleSeller}>Seller</button>
                 ):(
                     <p className='user-role'>{email}</p>
                 )}

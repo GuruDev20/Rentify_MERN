@@ -94,8 +94,8 @@ function LoginSignUp() {
                 if(role==='User'){
                     navigate('/');
                 }
-                else if(role==='Dealer'){
-                    navigate('/dealers');
+                else if(role==='Seller'){
+                    navigate('/');
                 }
             }
         })

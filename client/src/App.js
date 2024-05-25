@@ -7,6 +7,8 @@ import LoginSignUp from './Components/LoginSignUp';
 import Cart from './Components/Cart';
 import Wishlist from './Components/Wishlist';
 import Profile from './Components/Profile';
+import Stocks from './Components/Stocks';
+
 function App() {
     window.addEventListener("scroll", reveal);
     function reveal() {
@@ -39,6 +41,7 @@ function App() {
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/wishlist' element={<Wishlist/>}/>
             <Route path='/profile' element={<Profile/>}/>
+            <Route path='/stocks' element={<Stocks/>}/>
         </Routes>
     )
 }
