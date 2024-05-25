@@ -4,7 +4,7 @@ const app=express();
 const cors=require('cors');
 const cookieParser=require('cookie-parser');
 const connection=require('./DB/dbConn');
-const {authRoute,sellerRoute,userRoute}=require('/Routes')
+const {authRoute,sellerRoute,userRoute}=require('./Routes')
 
 connection();
 

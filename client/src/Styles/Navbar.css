@@ -124,6 +124,7 @@ span {
 .nav-link:focus,
 .nav-link-details {
     color: #0d3b66;
+    cursor: pointer;
 }
 .nav-link-details{
     display: flex;
@@ -157,4 +158,8 @@ span {
 
 .suggestion-item:hover {
     background-color: #f0f0f0;
+}
+
+.user-role{
+    padding-right: 15px;
 }

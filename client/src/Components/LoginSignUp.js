@@ -8,7 +8,7 @@ import {useNavigate } from 'react-router-dom'
 import axios from 'axios'
 function LoginSignUp() {
     const navigate = useNavigate();
-    const [data,setData]=useState({username:"",email:"",password:"",mobile:"",role:""})
+    const [data,setData]=useState({firstName:"",lastName:"",email:"",password:"",mobile:"",role:""})
     const [isLoginForm, setIsLoginForm] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -114,7 +114,8 @@ function LoginSignUp() {
             .then((res)=>{
                 if(res.status===201){
                     alert(`Hi ${firstName}! Registration successful! Redirecting to Login...`)
-                    navigate('/loginRegister')
+                    window.location.reload();
+                    // navigate('/loginRegister')
                 }
                 else{
                     alert("Unexpected error: " + res.status);
@@ -171,9 +172,9 @@ function LoginSignUp() {
             <div className='register-inputs'>
                 <form onSubmit={handleSubmit}>
                 <h2 className='register-header'>Sign Up</h2>
-                <input type='text' placeholder='FirstName' className='register-username' value={firstName} onChange={(e) => { setFirstName(e.target.value);validateFirstName(e.target.value);setData({...data,firstname:e.target.value})}}/><RiUserFill size={22} className='login-register-icon3'/>
+                <input type='text' placeholder='FirstName' className='register-username' value={firstName} onChange={(e) => { setFirstName(e.target.value);validateFirstName(e.target.value);setData({...data,firstName:e.target.value})}}/><RiUserFill size={22} className='login-register-icon3'/>
                 <span className={`validation-message ${FirstNameValidation.isValid === true ? 'valid' : FirstNameValidation.isValid === false ? 'invalid' : ''}`}>{FirstNameValidation.message}</span>
-                <input type='text' placeholder='LastName' className='register-username' value={lastName} onChange={(e) => { setLastName(e.target.value);validateLastName(e.target.value);setData({...data,lastname:e.target.value})}}/><RiUserFill size={22} className='login-register-icon4'/>
+                <input type='text' placeholder='LastName' className='register-username' value={lastName} onChange={(e) => { setLastName(e.target.value);validateLastName(e.target.value);setData({...data,lastName:e.target.value})}}/><RiUserFill size={22} className='login-register-icon4'/>
                 <span className={`validation-message ${LastNameValidation.isValid === true ? 'valid' : LastNameValidation.isValid === false ? 'invalid' : ''}`}>{LastNameValidation.message}</span>
                 <input type='text' placeholder='Email' className='register-email' value={email} onChange={(e) => {setEmail(e.target.value);validateEmail(e.target.value);setData({...data,email:e.target.value})}}/><MdEmail size={22} className='login-register-icon5'/>
                 <span className={`validation-message ${emailValidation.isValid === true ? 'valid' : emailValidation.isValid === false ? 'invalid' : ''}`}>{emailValidation.message}</span>

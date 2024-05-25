@@ -2,7 +2,7 @@ const ItemModel=require('../model/HouseModel')
 const OrderModel=require('../model/orderModel')
 const UserModel=require('../model/userModel')
 const ReviewModel=require('../model/reviewModel')
-// const jwt= require('jsonwebtoken');
+const jwt= require('jsonwebtoken');
 const SellerController={
     async store(req,res){
         try {

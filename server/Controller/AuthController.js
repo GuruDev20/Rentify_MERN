@@ -1,6 +1,7 @@
 const UserModel=require('../model/userModel');
 const bcrypt=require('bcrypt');
-const JWT=require('../strategies/JWT');
+const JWT=require('../JWT/JWT');
+const mongoose=require('mongoose');
 const AuthController={
     async signup(req,res){
         const data=req.body;
@@ -62,11 +63,30 @@ const AuthController={
     async logout(req,res){
         try{
             res.clearCookie("JWT");
-            console.log("logged out");
             res.status(200).send("Logged out");
         }
         catch(error){
             res.status(500).send("Internal server error");
+        }
+    },
+
+    async profile(req, res) {
+        try {
+            const { userId } = req.params;
+            const user = await UserModel.findById(userId);
+            if (!user) {
+                return res.status(400).send("User not found");
+            }
+            let userEmail, userRole;
+            if (user.role === 'Seller' || user.role === 'User') {
+                userEmail = user.email;
+                userRole = user.role;
+            }
+            res.status(200).json({ email: userEmail, role: userRole });
+        }
+        catch (error) {
+            console.error("Error:", error);
+            res.status(500).send("Internal error");
         }
     }
 }

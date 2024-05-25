@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { IoHome, IoSearchSharp } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { IoPersonCircleSharp } from 'react-icons/io5';
 import { CgProfile } from 'react-icons/cg';
 import { MdLogout } from 'react-icons/md';
 import '../Styles/Navbar.css'
-
+import axios from 'axios';
 const suggestions = [
     'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dharmapuri', 
     'Dindigul', 'Erode', 'Kallakurichi', 'Kanchipuram', 'Kanyakumari', 'Karur', 
@@ -24,6 +24,28 @@ export default function Navbar() {
     const [location, setLocation] = useState('');
     const [suggestedLocations, setSuggestedLocations] = useState([]);
     const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
+    const [seller,setSeller]=useState(false);
+    const [user,setUser]=useState(false);
+    const [email,setEmail] = useState('');
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        console.log(userId);
+        axios.get(`http://localhost:4000/auth/profile/${userId}`)
+            .then(response => {
+                const { email, role } = response.data;
+                console.log(response.data)
+                if (role === 'Seller') {
+                    setSeller(true);
+                    setEmail(email);
+                } else if (role === 'User') {
+                    setUser(true);
+                    setEmail(email);
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching user profile:", error);
+            });
+    }, []);
 
     const toggleProfileDropdown = () => {
         setProfileDropdownOpen(!isProfileDropdownOpen);
@@ -50,9 +72,22 @@ export default function Navbar() {
         setSuggestedLocations([]);
     };
 
-    const handleLogout = () => {};
-    // const isLoggedIn = !!localStorage.getItem('userId');
-    const isLoggedIn = false;
+    const handleLogout = () => {
+        axios.post("http://localhost:4000/auth/logout")
+        .then((res) => {
+            if (res.status === 200) {
+                alert(`Logout successful!`);
+                navigate("/");
+            } 
+            else {
+                alert("Unexpected response status: " + res.status);
+            }
+        })
+        .catch((err) => console.log(err));
+        localStorage.removeItem('userId')
+    };
+    const isLoggedIn = !!localStorage.getItem('userId');
+    // const isLoggedIn = false;
 
     return (
         <div className="header">
@@ -80,6 +115,11 @@ export default function Navbar() {
                 )}
             </div>
             <div className="user-properties">
+                {seller||user?(
+                    <p className='user-role'>{email}</p>
+                ):(
+                    <p className='user-role'>{email}</p>
+                )}
                 <div className='wishlist'>
                     <Link to='/wishlist'><CiHeart size={40} color='#e56b6f'/></Link>
                 </div>
