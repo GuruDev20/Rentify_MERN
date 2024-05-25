@@ -2,6 +2,7 @@ import React from 'react'
 import './Styles/App.css'
 import {Routes,Route} from 'react-router-dom'
 import Welcome from './Components/Welcome';
+import SearchResults from './Components/SearchResults';
 function App() {
     window.addEventListener("scroll", reveal);
     function reveal() {
@@ -29,6 +30,7 @@ function App() {
     return (
         <Routes>
             <Route path='/' element={<Welcome/>}/>
+            <Route path='/searchResults' element={<SearchResults/>}/>
         </Routes>
     )
 }
