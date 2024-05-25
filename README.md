@@ -43,3 +43,7 @@ To run Rentify locally, follow these steps:
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to Rentify, please fork the repository and submit a pull request with your changes.
+
+## GitHub Link
+
+Link - https://github.com/GuruDev20/Rentify_MERN.git
