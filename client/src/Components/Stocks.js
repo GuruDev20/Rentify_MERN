@@ -663,11 +663,10 @@ export default function Stocks() {
                                     <input type='text' placeholder='Name' onChange={(e)=>setData({...data,name:e.target.value})}/>
                                     <input type='number' placeholder='Price' onChange={(e)=>setData({...data,price:e.target.value})}/>
                                     <input type='text' placeholder='Furnished' onChange={(e)=>setData({...data,furnished:e.target.value})}/>
-                                    <input type='text' placeholder='Area' onChange={(e)=>setData({...data,area:e.target.value})}/>
                                     <div className='add-size'>
                                         <div className='size-dropdown' onClick={() => setShowAreaDropdown(!showCategoryDropdown)}>
                                             <div className='sizes-select-field'>
-                                                Category<span></span>
+                                                Area<span></span>
                                                 <RiArrowDropDownLine size={25} className='close-symbol' />
                                                 {showAreaDropdown &&
                                                     <div className='dropdown-options'>
