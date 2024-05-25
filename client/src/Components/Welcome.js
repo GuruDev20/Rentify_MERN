@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Main from './Main'
 import Products from './Products'
 import CustomerReview from './CustomerReview'
+import Footer from './Footer'
 export default function Welcome() {
     return (
         <div>
@@ -10,6 +11,7 @@ export default function Welcome() {
             <Main/>
             <Products/>
             <CustomerReview/>
+            <Footer/>
         </div>
     )
 }
