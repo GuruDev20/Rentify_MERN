@@ -4,6 +4,8 @@ import {Routes,Route} from 'react-router-dom'
 import Welcome from './Components/Welcome';
 import SearchResults from './Components/SearchResults';
 import LoginSignUp from './Components/LoginSignUp';
+import Cart from './Components/Cart';
+import Wishlist from './Components/Wishlist';
 function App() {
     window.addEventListener("scroll", reveal);
     function reveal() {
@@ -33,6 +35,8 @@ function App() {
             <Route path='/' element={<Welcome/>}/>
             <Route path='/searchResults' element={<SearchResults/>}/>
             <Route path='/loginRegister' element={<LoginSignUp/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/wishlist' element={<Wishlist/>}/>
         </Routes>
     )
 }
